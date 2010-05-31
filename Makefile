@@ -10,6 +10,7 @@ SRCS=		ber.c log.c control.c \
 
 LDADD=		-levent -lcrypto -lssl -lz -lutil
 DPADD=		${LIBEVENT} ${LIBCRYPTO} ${LIBSSL} ${LIBZ} ${LIBUTIL}
+CFLAGS+=	-I${.CURDIR}
 CFLAGS+=	-Wall -Wstrict-prototypes -Wmissing-prototypes
 CFLAGS+=	-Wmissing-declarations
 CFLAGS+=	-Wshadow -Wpointer-arith -Wcast-qual
