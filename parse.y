@@ -382,7 +382,7 @@ attr_type	: ATTRIBUTETYPE '(' numericoid {
                                 free($3);
 				YYERROR;
                         }
-        		cattr->oid = $3;
+			cattr->oid = $3;
                         p = RB_INSERT(attr_type_tree, &conf->attr_types, cattr);
 			if (p != NULL) {
 				yyerror("attribute '%s' already defined", $3);
@@ -432,7 +432,7 @@ object		: OBJECTCLASS '(' numericoid {
                                 free($3);
 				YYERROR;
                         }
-        		cobj->oid = $3;
+			cobj->oid = $3;
                         p = RB_INSERT(object_tree, &conf->objects, cobj);
 			if (p != NULL) {
 				yyerror("object '%s' already defined", $3);

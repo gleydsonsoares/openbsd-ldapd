@@ -237,7 +237,7 @@ conn_accept(int fd, short why, void *data)
 	struct sockaddr_storage	 remote_addr;
 	char			 host[128];
 
- 	addrlen = sizeof(remote_addr);
+	addrlen = sizeof(remote_addr);
 	afd = accept(fd, (struct sockaddr *)&remote_addr, &addrlen);
 	if (afd == -1) {
 		log_warn("accept");

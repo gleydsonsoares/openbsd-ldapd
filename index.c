@@ -67,7 +67,7 @@
  * @ou=people,cn=chunky bacon
  * @ou=people,cn=chunky beans
  * @ou=people,cn=crispy bacon
- * 
+ *
  */
 
 #include <sys/types.h>

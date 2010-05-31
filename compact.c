@@ -115,7 +115,7 @@ again:
 		namespace_queue_schedule(c->ns);
 
 		if (c->all) {
-			/* Proceed with the next namespace that isn't 
+			/* Proceed with the next namespace that isn't
 			 * already being compacted or indexed.
 			 */
 			while ((c->ns = TAILQ_NEXT(c->ns, next)) != NULL) {

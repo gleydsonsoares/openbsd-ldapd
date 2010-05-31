@@ -163,7 +163,7 @@ ldap_extended(struct request *req)
 	char			*oid = NULL;
 	struct ber_element	*ext_val = NULL;
 	struct {
-		const char 	*oid;
+		const char	*oid;
 		int (*fn)(struct request *);
 	} extended_ops[] = {
 		{ "1.3.6.1.4.1.1466.20037", ldap_starttls },
