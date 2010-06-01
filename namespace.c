@@ -46,6 +46,7 @@ namespace_new(const char *suffix)
 	ns->sync = 1;
 	if (ns->suffix == NULL) {
 		free(ns->suffix);
+		free(ns);
 		return NULL;
 	}
 	TAILQ_INIT(&ns->indices);
