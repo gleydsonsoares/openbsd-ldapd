@@ -285,6 +285,11 @@ ldape(struct passwd *pw, char *csockpath, int pipe_parent2ldap[2])
 		ssl_setup(conf, l);
 	}
 
+	TAILQ_FOREACH(ns, &conf->namespaces, next) {
+		if (namespace_open(ns) != 0)
+			fatal(ns->suffix);
+	}
+
 	if (pw != NULL) {
 		if (chroot(pw->pw_dir) == -1)
 			fatal("chroot");
@@ -295,11 +300,6 @@ ldape(struct passwd *pw, char *csockpath, int pipe_parent2ldap[2])
 		    setresgid(pw->pw_gid, pw->pw_gid, pw->pw_gid) ||
 		    setresuid(pw->pw_uid, pw->pw_uid, pw->pw_uid))
 			fatal("cannot drop privileges");
-	}
-
-	TAILQ_FOREACH(ns, &conf->namespaces, next) {
-		if (namespace_open(ns) != 0)
-			fatal(ns->suffix);
 	}
 
 	log_debug("ldape: entering event loop");

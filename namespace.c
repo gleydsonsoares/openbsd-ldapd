@@ -116,7 +116,7 @@ namespace_open(struct namespace *ns)
 	if (ns->sync == 0)
 		db_flags |= BT_NOSYNC;
 
-	if (asprintf(&ns->data_path, "%s_data.db", ns->suffix) < 0)
+	if (asprintf(&ns->data_path, "%s/%s_data.db", DATADIR, ns->suffix) < 0)
 		return -1;
 	log_info("opening namespace %s", ns->suffix);
 	ns->data_db = btree_open(ns->data_path, db_flags | BT_REVERSEKEY, 0644);
@@ -125,7 +125,7 @@ namespace_open(struct namespace *ns)
 
 	btree_set_cache_size(ns->data_db, ns->cache_size);
 
-	if (asprintf(&ns->indx_path, "%s_indx.db", ns->suffix) < 0)
+	if (asprintf(&ns->indx_path, "%s/%s_indx.db", DATADIR, ns->suffix) < 0)
 		return -1;
 	ns->indx_db = btree_open(ns->indx_path, db_flags, 0644);
 	if (ns->indx_db == NULL)
