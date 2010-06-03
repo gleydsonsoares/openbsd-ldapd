@@ -173,7 +173,7 @@ struct node {
 	uint16_t	 ksize;			/* key size */
 #define F_BIGDATA	 0x01			/* data put on overflow page */
 	uint8_t		 flags;
-	char		 data[];
+	char		 data[1];
 };
 
 struct btree_txn {
@@ -2168,6 +2168,7 @@ btree_merge(struct btree *bt, struct mpage *src, struct mpage *dst)
 {
 	int			 rc;
 	indx_t			 i;
+	unsigned int		 pfxlen;
 	struct node		*srcnode;
 	struct btkey		 tmpkey, dstpfx;
 	struct btval		 key, data;
@@ -2240,7 +2241,7 @@ btree_merge(struct btree *bt, struct mpage *src, struct mpage *dst)
 		if (btree_update_key(bt, src->parent, 0, &key) != BT_SUCCESS)
 			return BT_FAIL;
 
-		unsigned int pfxlen = src->prefix.len;
+		pfxlen = src->prefix.len;
 		find_common_prefix(bt, src);
 		assert (src->prefix.len == pfxlen);
 	}

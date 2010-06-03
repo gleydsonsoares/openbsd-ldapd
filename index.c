@@ -375,7 +375,7 @@ continue_indexer(int fd, short why, void *arg)
 	struct ber_element	*elm;
 	struct btval		 key, val;
 	struct timeval		 tv;
-	int			 i, rc;
+	int			 i, rc = BT_FAIL;
 
 	if (c->cursor == NULL) {
 		log_info("begin indexing namespace %s", c->ns->suffix);
