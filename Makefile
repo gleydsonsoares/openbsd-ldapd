@@ -8,7 +8,7 @@ SRCS=		ber.c log.c control.c \
 		auth.c modify.c index.c ssl.c ssl_privsep.c compact.c \
 		validate.c uuid.c
 
-LDADD=		-levent -lcrypto -lssl -lz -lutil
+LDADD=		-levent -lssl -lcrypto -lz -lutil
 DPADD=		${LIBEVENT} ${LIBCRYPTO} ${LIBSSL} ${LIBZ} ${LIBUTIL}
 CFLAGS+=	-I${.CURDIR}
 CFLAGS+=	-Wall -Wstrict-prototypes -Wmissing-prototypes
