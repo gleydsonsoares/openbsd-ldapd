@@ -653,16 +653,16 @@ btree_txn_abort(struct btree_txn *txn)
 	bt = txn->bt;
 	DPRINTF("abort transaction on btree %p, root page %u", bt, txn->root);
 
-	/* Discard all dirty pages.
-	 */
-	while (!SIMPLEQ_EMPTY(txn->dirty_queue)) {
-		mp = SIMPLEQ_FIRST(txn->dirty_queue);
-		assert(mp->ref == 0);		/* cursors should be closed */
-		mpage_del(bt, mp);
-		SIMPLEQ_REMOVE_HEAD(txn->dirty_queue, next);
-	}
-
 	if (!F_ISSET(txn->flags, BT_TXN_RDONLY)) {
+		/* Discard all dirty pages.
+		 */
+		while (!SIMPLEQ_EMPTY(txn->dirty_queue)) {
+			mp = SIMPLEQ_FIRST(txn->dirty_queue);
+			assert(mp->ref == 0);	/* cursors should be closed */
+			mpage_del(bt, mp);
+			SIMPLEQ_REMOVE_HEAD(txn->dirty_queue, next);
+		}
+
 		DPRINTF("releasing write lock on txn %p", txn);
 		txn->bt->txn = NULL;
 		if (flock(txn->bt->fd, LOCK_UN) != 0) {
