@@ -72,7 +72,7 @@ send_ldap_extended_response(struct conn *conn, int msgid, unsigned long type,
 	struct ber_element	*root, *elm;
 	void			*buf;
 
-	log_debug("sending response %u with result %d", type, result_code);
+	log_debug("sending response %u with result %lld", type, result_code);
 
 	if ((root = ber_add_sequence(NULL)) == NULL)
 		goto fail;
