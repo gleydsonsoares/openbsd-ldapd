@@ -162,6 +162,8 @@ struct search {
 	struct conn		*conn;
 	struct request		*req;
 	struct namespace	*ns;
+	struct btree_txn	*data_txn;
+	struct btree_txn	*indx_txn;
 	struct cursor		*cursor;
 	unsigned int		 nscanned, nmatched, ndups;
 	time_t			 started_at;
