@@ -56,6 +56,9 @@
 
 #define F_ISSET(w, f)	 (((w) & (f)) == (f))
 
+typedef uint32_t	 pgno_t;
+typedef uint16_t	 indx_t;
+
 /* There are four page types: meta, index, leaf and overflow.
  * They all share the same page header.
  */
@@ -957,7 +960,7 @@ fail:
 }
 
 struct btree *
-btree_open_fd(int fd, uint32_t flags)
+btree_open_fd(int fd, unsigned int flags)
 {
 	int		 fl, rc;
 	struct btree	*bt;
@@ -1021,7 +1024,7 @@ fail:
 }
 
 struct btree *
-btree_open(const char *path, uint32_t flags, mode_t mode)
+btree_open(const char *path, unsigned int flags, mode_t mode)
 {
 	int		 fd, oflags;
 	struct btree	*bt;
