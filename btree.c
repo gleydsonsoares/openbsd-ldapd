@@ -2433,6 +2433,11 @@ btree_txn_del(struct btree *bt, struct btree_txn *txn,
 		return BT_FAIL;
 	}
 
+	if (txn != NULL && F_ISSET(txn->flags, BT_TXN_RDONLY)) {
+		errno = EINVAL;
+		return BT_FAIL;
+	}
+
 	if (bt == NULL) {
 		if (txn == NULL) {
 			errno = EINVAL;
@@ -2739,6 +2744,11 @@ btree_txn_put(struct btree *bt, struct btree_txn *txn,
 	assert(data != NULL);
 
 	if (bt != NULL && txn != NULL && bt != txn->bt) {
+		errno = EINVAL;
+		return BT_FAIL;
+	}
+
+	if (txn != NULL && F_ISSET(txn->flags, BT_TXN_RDONLY)) {
 		errno = EINVAL;
 		return BT_FAIL;
 	}
