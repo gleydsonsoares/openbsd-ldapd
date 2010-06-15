@@ -1526,3 +1526,24 @@ mk_aci(int type, int rights, enum scope scope, char *target, char *subject)
 	return aci;
 }
 
+struct namespace *
+namespace_new(const char *suffix)
+{
+	struct namespace		*ns;
+
+	if ((ns = calloc(1, sizeof(*ns))) == NULL)
+		return NULL;
+	ns->suffix = strdup(suffix);
+	ns->sync = 1;
+	if (ns->suffix == NULL) {
+		free(ns->suffix);
+		free(ns);
+		return NULL;
+	}
+	TAILQ_INIT(&ns->indices);
+	TAILQ_INIT(&ns->request_queue);
+	SIMPLEQ_INIT(&ns->acl);
+
+	return ns;
+}
+

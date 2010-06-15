@@ -594,6 +594,9 @@ int			 bsnprintf(char *str, size_t size,
 int			 has_suffix(struct btval *key, const char *suffix);
 int			 has_prefix(struct btval *key, const char *prefix);
 void			 normalize_dn(char *dn);
+int			 ber2db(struct ber_element *root, struct btval *val,
+			    int compression_level);
+struct ber_element	*db2ber(struct btval *val, int compression_level);
 
 /* index.c */
 int			 index_namespace(struct namespace *ns);
