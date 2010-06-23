@@ -74,6 +74,7 @@
 #include <sys/queue.h>
 
 #include <assert.h>
+#include <errno.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -188,7 +189,7 @@ unindex_attribute(struct namespace *ns, char *attr, struct btval *dn,
 		normalize_dn(key.data);
 		rc = btree_txn_del(NULL, ns->indx_txn, &key, NULL);
 		free(t);
-		if (rc == BT_FAIL)
+		if (rc == BT_FAIL && errno != ENOENT)
 			return -1;
 	}
 
@@ -240,7 +241,7 @@ unindex_rdn(struct namespace *ns, struct btval *dn)
 	normalize_dn(key.data);
 	rc = btree_txn_del(NULL, ns->indx_txn, &key, NULL);
 	free(t);
-	if (rc == BT_FAIL)
+	if (rc == BT_FAIL && errno != ENOENT)
 		return -1;
 	return 0;
 }
