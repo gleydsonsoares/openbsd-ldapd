@@ -376,9 +376,6 @@ struct imsgev {
 	short			 events;
 };
 
-struct ctl_conn;
-typedef void (*ctl_close_func)(struct ctl_conn *);
-
 struct ctl_conn {
 	TAILQ_ENTRY(ctl_conn)	 entry;
 	u_int8_t		 flags;
