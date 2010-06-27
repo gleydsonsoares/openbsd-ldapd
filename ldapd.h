@@ -490,9 +490,7 @@ void			 control_init(struct control_sock *);
 void			 control_listen(struct control_sock *);
 void			 control_accept(int, short, void *);
 void			 control_dispatch_imsg(int, short, void *);
-void			 control_imsg_forward(struct imsg *);
 void			 control_cleanup(struct control_sock *);
-void			 control_end(struct ctl_conn *c);
 
 /* filter.c */
 int			 ldap_matches_filter(struct ber_element *root,
