@@ -414,7 +414,7 @@ void			 conn_err(struct bufferevent *bev, short w, void *data);
 void			 conn_accept(int fd, short why, void *data);
 void			 conn_close(struct conn *conn);
 void			 conn_disconnect(struct conn *conn);
-int			 request_dispatch(struct request *req);
+void			 request_dispatch(struct request *req);
 void			 request_free(struct request *req);
 
 /* ldape.c */
