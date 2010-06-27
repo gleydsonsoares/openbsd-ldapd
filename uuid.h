@@ -48,13 +48,8 @@ struct uuid {
 
 typedef struct uuid afsUUID;
 
-int	uuid_compare(const afsUUID *, const afsUUID *);
 void	uuid_create(afsUUID *);
-int	uuid_create_nil(afsUUID *);
-int	uuid_equal(const afsUUID *, const afsUUID *);
-int	uuid_from_string(const char *, afsUUID *);
-int	uuid_is_nil(const afsUUID *);
-int	uuid_to_string(const afsUUID *, char *, size_t);
+void	uuid_to_string(const afsUUID *, char *, size_t);
 
 #endif /* __ARLA_UUID_H__ */
 
