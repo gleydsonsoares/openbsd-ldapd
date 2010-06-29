@@ -125,7 +125,7 @@ ldap_add(struct request *req)
 		namespace_abort(ns);
 		if (rc == LDAP_SUCCESS && errno == EEXIST)
 			rc = LDAP_ALREADY_EXISTS;
-		else
+		else if (rc == LDAP_SUCCESS)
 			rc = LDAP_OTHER;
 	} else if (namespace_commit(ns) != 0)
 		rc = LDAP_OTHER;
