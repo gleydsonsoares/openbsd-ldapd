@@ -203,6 +203,7 @@ struct conn
 	struct request		*bind_req;	/* ongoing bind request */
 	char			*binddn;
 	TAILQ_HEAD(, search)	 searches;
+	struct listener		*listener;	/* where it connected from */
 
 	/* SSL support */
 	struct event		 s_ev;

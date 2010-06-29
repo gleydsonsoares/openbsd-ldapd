@@ -153,6 +153,11 @@ ldap_unbind(struct request *req)
 int
 ldap_starttls(struct request *req)
 {
+	if ((req->conn->listener->flags & F_STARTTLS) == 0) {
+		log_debug("StartTLS not configured for this connection");
+		return LDAP_OPERATIONS_ERROR;
+	}
+
 	req->conn->s_flags |= F_STARTTLS;
 	return LDAP_SUCCESS;
 }

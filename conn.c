@@ -266,6 +266,7 @@ conn_accept(int fd, short why, void *data)
 	conn->s_l = l;
 	ber_set_application(&conn->ber, ldap_application);
 	conn->fd = afd;
+	conn->listener = l;
 
 	if (l->flags & F_LDAPS) {
 		ssl_session_init(conn);
