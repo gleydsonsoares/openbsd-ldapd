@@ -100,6 +100,8 @@ Only secured connections accept plain text password authentication.
 Connections using TLS or unix domain sockets are always considered secured.
 The secure keyword can be used to mark an otherwise insecure connection
 secured, e.g. if IPsec is used.
+.It schema Ar filename
+Add schema definitions from the specified file.
 .El
 .Sh NAMESPACES
 A namespace is a subtree of the global X.500 DIT (Directory Information Tree),
@@ -212,12 +214,6 @@ Typically used to allow users to modify their own data.
 Enable compression of entries and optionally specify compression level (0 - 9).
 By default, no compression is used.
 .El
-.Sh ATTRIBUTE TYPES
-.Pp
-As defined in RFC4512...
-.Sh OBJECTCLASSES
-.Pp
-As defined in RFC4512...
 .Sh FILES
 .Bl -tag -width "/etc/ldap/ldapd.confXXX" -compact
 .It Pa /etc/ldapd.conf
