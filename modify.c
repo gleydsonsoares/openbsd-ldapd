@@ -139,7 +139,7 @@ ldap_modify(struct request *req)
 	int			 rc;
 	char			*dn;
 	long long		 op;
-	const char		*attr;
+	char			*attr;
 	struct ber_element	*mods, *entry, *mod, *vals, *a, *set;
 	struct namespace	*ns;
 	struct attr_type	*at;
@@ -181,7 +181,7 @@ ldap_modify(struct request *req)
 			goto done;
 		}
 
-		if ((at = lookup_attribute(attr)) == NULL && !ns->relax) {
+		if ((at = lookup_attribute(conf->schema, attr)) == NULL && !ns->relax) {
 			log_debug("unknown attribute type %s", attr);
 			rc = LDAP_NO_SUCH_ATTRIBUTE;
 			goto done;

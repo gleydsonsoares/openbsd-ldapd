@@ -55,7 +55,7 @@ is_operational(char *adesc)
 {
 	struct attr_type	*at;
 
-	at = lookup_attribute(adesc);
+	at = lookup_attribute(conf->schema, adesc);
 	if (at)
 		return at->usage != USAGE_USER_APP;
 
