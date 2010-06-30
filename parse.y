@@ -1146,6 +1146,8 @@ namespace_new(const char *suffix)
 		return NULL;
 	ns->suffix = strdup(suffix);
 	ns->sync = 1;
+	ns->cache_size = 1024;
+	ns->index_cache_size = 512;
 	if (ns->suffix == NULL) {
 		free(ns->suffix);
 		free(ns);
