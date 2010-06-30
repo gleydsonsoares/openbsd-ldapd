@@ -191,6 +191,8 @@ send_stats(struct imsgev *iev)
 	    &stats, sizeof(stats));
 
 	TAILQ_FOREACH(ns, &conf->namespaces, next) {
+		if (namespace_has_referrals(ns))
+			continue;
 		strlcpy(nss.suffix, ns->suffix, sizeof(nss.suffix));
 		st = btree_stat(ns->data_db);
 		bcopy(st, &nss.data_stat, sizeof(nss.data_stat));

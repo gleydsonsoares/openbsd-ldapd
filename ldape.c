@@ -463,6 +463,8 @@ ldape_open_result(struct imsg *imsg)
 	log_debug("open(%s) returned fd %i", oreq->path, imsg->fd);
 
 	TAILQ_FOREACH(ns, &conf->namespaces, next) {
+		if (namespace_has_referrals(ns))
+			continue;
 		if (strcmp(oreq->path, ns->data_path) == 0) {
 			namespace_set_data_fd(ns, imsg->fd);
 			break;
