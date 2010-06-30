@@ -197,7 +197,7 @@ has_attribute(struct attr_type *at, struct attr_list *alist)
 		return 0;
 
 	SLIST_FOREACH(ap, alist, next) {
-		if (at == ap->attr_type) 
+		if (at == ap->attr_type)
 			return 1;
 	}
 	return 0;
