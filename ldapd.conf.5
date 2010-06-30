@@ -114,6 +114,13 @@ The URL format has the following format:
 ldap://ldap.example.com
 ldaps://ldap.example.com:3890
 .Ed
+.It rootdn Ar dn
+Specify the distinguished name of the root user for all namespaces.
+The root user is always allowed to read and write entries in all
+local namespaces.
+.It rootpw Ar password
+Password for the root user.
+Specified either in plain text, or in hashed format.
 .It schema Ar filename
 Add schema definitions from the specified file.
 .El

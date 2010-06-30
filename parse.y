@@ -209,6 +209,11 @@ conf_main	: LISTEN ON STRING port ssl certname	{
 			ref->url = $2;
 			SLIST_INSERT_HEAD(&conf->referrals, ref, next);
 		}
+		| ROOTDN STRING			{
+			conf->rootdn = $2;
+			normalize_dn(conf->rootdn);
+		}
+		| ROOTPW STRING			{ conf->rootpw = $2; }
 		;
 
 namespace	: NAMESPACE STRING '{' '\n'		{

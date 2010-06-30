@@ -241,6 +241,8 @@ struct ldapd_config
 	struct referrals		 referrals;
 	struct acl			 acl;
 	struct schema			*schema;
+	char				*rootdn;
+	char				*rootpw;
 };
 
 struct ldapd_stats
