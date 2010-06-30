@@ -19,6 +19,10 @@
 #ifndef _schema_h_
 #define _schema_h_
 
+#define OBJ_NAME(obj)	 ((obj)->names ? SLIST_FIRST((obj)->names)->name : \
+				(obj)->oid)
+#define ATTR_NAME(at)	 OBJ_NAME(at)
+
 enum usage {
 	USAGE_USER_APP,
 	USAGE_DIR_OP,		/* operational attribute */
