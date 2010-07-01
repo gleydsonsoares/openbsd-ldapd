@@ -32,7 +32,7 @@ enum usage {
 
 struct name {
 	SLIST_ENTRY(name)	 next;
-	const char		*name;
+	char			*name;
 };
 SLIST_HEAD(name_list, name);
 
