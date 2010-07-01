@@ -586,8 +586,10 @@ schema_parse_attrlist(struct schema *schema)
 		}
 		if (token != STRING)
 			goto fail;
-		if ((attr = lookup_attribute(schema, kw)) == NULL)
+		if ((attr = lookup_attribute(schema, kw)) == NULL) {
+			schema_err(schema, "%s: no such attribute", kw);
 			goto fail;
+		}
 		alist = push_attr(alist, attr);
 		want_dollar = 1;
 	}
