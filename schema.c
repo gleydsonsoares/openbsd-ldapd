@@ -651,7 +651,7 @@ static int
 schema_parse_attributetype(struct schema *schema)
 {
 	struct attr_type	*attr = NULL, *prev;
-	char			*kw, *arg = NULL;
+	char			*kw = NULL, *arg = NULL;
 	int			 token, ret = 0, c;
 
 	if (schema_lex(schema, NULL) != '(')
@@ -768,7 +768,7 @@ schema_parse_objectclass(struct schema *schema)
 {
 	struct object		*obj = NULL, *prev;
 	struct obj_ptr		*optr;
-	char			*kw;
+	char			*kw = NULL;
 	int			 token, ret = 0;
 
 	if (schema_lex(schema, NULL) != '(')
