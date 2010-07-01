@@ -3059,6 +3059,7 @@ btree_compact(struct btree *bt)
 	if ((btc = btree_open_fd(fd, 0)) == NULL)
 		goto failed;
 	bcopy(&bt->meta, &btc->meta, sizeof(bt->meta));
+	btc->meta.revisions = 0;
 
 	if ((txnc = btree_txn_begin(btc, 0)) == NULL)
 		goto failed;
