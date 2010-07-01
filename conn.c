@@ -93,6 +93,7 @@ request_dispatch(struct request *req)
 	} requests[] = {
 		{ LDAP_REQ_SEARCH,	ldap_search },
 		{ LDAP_REQ_BIND,	ldap_bind },
+		{ LDAP_REQ_COMPARE,	ldap_compare },
 		{ LDAP_REQ_ADD,		ldap_add },
 		{ LDAP_REQ_UNBIND_30,	ldap_unbind },
 		{ LDAP_REQ_MODIFY,	ldap_modify },

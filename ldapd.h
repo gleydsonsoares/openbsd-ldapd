@@ -353,6 +353,7 @@ pid_t			 ldape(struct passwd *pw, char *csockpath,
 				int pipe_parent2ldap[2]);
 int			 ldap_abandon(struct request *req);
 int			 ldap_unbind(struct request *req);
+int			 ldap_compare(struct request *req);
 int			 ldap_extended(struct request *req);
 
 void			 send_ldap_result(struct conn *conn, int msgid,
