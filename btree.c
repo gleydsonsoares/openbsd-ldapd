@@ -944,6 +944,8 @@ btree_write_meta(struct btree *bt, pgno_t root, unsigned int flags)
 	bcopy(&bt->meta, meta, sizeof(*meta));
 
 	rc = write(bt->fd, mp->page, bt->head.psize);
+	mp->dirty = 0;
+	SIMPLEQ_REMOVE_HEAD(bt->txn->dirty_queue, next);
 	if (rc != (ssize_t)bt->head.psize) {
 		if (rc > 0)
 			DPRINTF("short write, filesystem full?");
