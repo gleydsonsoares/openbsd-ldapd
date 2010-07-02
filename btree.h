@@ -42,6 +42,7 @@ typedef void		 (*bt_prefix_func)(const struct btval *a,
 
 enum cursor_op {				/* cursor operations */
 	BT_CURSOR,				/* position at given key */
+	BT_CURSOR_EXACT,			/* position at key, or fail */
 	BT_FIRST,
 	BT_NEXT,
 	BT_LAST,				/* not implemented */
