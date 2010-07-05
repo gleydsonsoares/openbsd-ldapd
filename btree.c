@@ -705,6 +705,7 @@ btree_txn_abort(struct btree_txn *txn)
 			assert(mp->ref == 0);	/* cursors should be closed */
 			mpage_del(bt, mp);
 			SIMPLEQ_REMOVE_HEAD(txn->dirty_queue, next);
+			mpage_free(mp);
 		}
 
 		DPRINTF("releasing write lock on txn %p", txn);
