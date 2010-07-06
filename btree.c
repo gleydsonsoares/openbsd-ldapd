@@ -3157,6 +3157,9 @@ btree_get_path(struct btree *bt)
 const struct btree_stat *
 btree_stat(struct btree *bt)
 {
+	if (bt == NULL)
+		return NULL;
+
 	bt->stat.branch_pages = bt->meta.branch_pages;
 	bt->stat.leaf_pages = bt->meta.leaf_pages;
 	bt->stat.overflow_pages = bt->meta.overflow_pages;
