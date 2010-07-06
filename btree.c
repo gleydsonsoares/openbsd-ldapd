@@ -2216,6 +2216,8 @@ btree_move_node(struct btree *bt, struct mpage *src, indx_t srcindx,
 	    src->pgno,
 	    dstindx, dst->pgno);
 
+	find_common_prefix(bt, src);
+
 	if (IS_BRANCH(src)) {
 		/* Need to check if the page the moved node points to
 		 * changes prefix.
