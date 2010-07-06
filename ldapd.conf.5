@@ -57,6 +57,13 @@ keyword, for example:
 include "/etc/ldap/sub.namespace.conf"
 .Ed
 .Pp
+Additional schema files can be included with the
+.Ic schema
+keyword, for example:
+.Bd -literal -offset indent
+schema "/etc/ldap/inetorgperson.schema"
+.Ed
+.Pp
 The syntax of
 .Nm
 is described below.
@@ -98,7 +105,9 @@ is appended to form the certificate path and key path respectively.
 .Pp
 Only secured connections accept plain text password authentication.
 Connections using TLS or unix domain sockets are always considered secured.
-The secure keyword can be used to mark an otherwise insecure connection
+The
+.Ic secure
+keyword can be used to mark an otherwise insecure connection
 secured, e.g. if IPsec is used.
 .It referral Ar URL
 Specify a default referral.
