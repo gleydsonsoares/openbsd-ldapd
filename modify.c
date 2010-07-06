@@ -81,6 +81,7 @@ ldap_delete(struct request *req)
 		goto done;
 	}
 
+	btval_reset(&key);
 	if (btree_cursor_get(cursor, &key, NULL, BT_NEXT) != 0) {
 		if (errno != ENOENT)
 			goto done;
@@ -94,6 +95,7 @@ ldap_delete(struct request *req)
 
 done:
 	btree_cursor_close(cursor);
+	btval_reset(&key);
 	namespace_abort(ns);
 	return ldap_respond(req, rc);
 }
