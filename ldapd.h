@@ -395,7 +395,8 @@ int			 namespace_commit(struct namespace *ns);
 void			 namespace_abort(struct namespace *ns);
 int			 namespace_queue_request(struct namespace *ns,
 				struct request *req);
-void			 namespace_queue_schedule(struct namespace *ns);
+void			 namespace_queue_schedule(struct namespace *ns,
+				unsigned int usec);
 void			 namespace_cancel_conn(struct conn *conn);
 
 int			 namespace_ber2db(struct namespace *ns,

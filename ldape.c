@@ -525,6 +525,6 @@ ldape_open_result(struct imsg *imsg)
 		log_warnx("spurious open result");
 		close(imsg->fd);
 	} else
-		namespace_queue_schedule(ns);
+		namespace_queue_schedule(ns, 0);
 }
 
