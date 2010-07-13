@@ -132,6 +132,9 @@ ldap_set_values(struct ber_element *elm, struct ber_element *vals)
 	old_vals->be_sub = NULL;
 	ber_link_elements(old_vals, vals->be_sub);
 
+	vals->be_sub = NULL;
+	ber_free_elements(vals);
+
 	return 0;
 }
 
@@ -156,6 +159,9 @@ ldap_merge_values(struct ber_element *elm, struct ber_element *vals)
 		last = last->be_next;
 
 	ber_link_elements(last, vals->be_sub);
+
+	vals->be_sub = NULL;
+	ber_free_elements(vals);
 
 	return 0;
 }
