@@ -2992,7 +2992,7 @@ btree_compact_tree(struct btree *bt, pgno_t pgno, struct btree *btc)
 {
 	ssize_t		 rc;
 	indx_t		 i;
-	pgno_t		*pnext;
+	pgno_t		*pnext, next;
 	struct node	*node;
 	struct page	*p;
 	struct mpage	*mp;
@@ -3021,12 +3021,13 @@ btree_compact_tree(struct btree *bt, pgno_t pgno, struct btree *btc)
 		for (i = 0; i < NUMKEYSP(p); i++) {
 			node = NODEPTRP(p, i);
 			if (F_ISSET(node->flags, F_BIGDATA)) {
-				pnext = NODEDATA(node);
-				*pnext = btree_compact_tree(bt, *pnext, btc);
-				if (*pnext == P_INVALID) {
+				bcopy(NODEDATA(node), &next, sizeof(next));
+				next = btree_compact_tree(bt, next, btc);
+				if (next == P_INVALID) {
 					free(p);
 					return P_INVALID;
 				}
+				bcopy(&next, NODEDATA(node), sizeof(next));
 			}
 		}
 	} else if (F_ISSET(p->flags, P_OVERFLOW)) {
