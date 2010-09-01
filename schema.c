@@ -1170,7 +1170,7 @@ schema_dump_attribute(struct attr_type *at, char *buf, size_t size)
 		return -1;
 
 	if (at->desc != NULL)
-		if (strlcat(buf, " DESC ", size) >= size ||
+		if (strlcat(buf, " DESC '", size) >= size ||
 		    strlcat(buf, at->desc, size) >= size ||
 		    strlcat(buf, "'", size) >= size)
 			return -1;
