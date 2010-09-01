@@ -35,6 +35,7 @@
 #include "aldap.h"
 #include "schema.h"
 #include "btree.h"
+#include "imsgev.h"
 
 #define CONFFILE		 "/etc/ldapd.conf"
 #define LDAPD_USER		 "_ldapd"
@@ -297,14 +298,6 @@ struct ns_stat {
 	char			 suffix[256];
 	struct btree_stat	 data_stat;
 	struct btree_stat	 indx_stat;
-};
-
-struct imsgev {
-	struct imsgbuf		 ibuf;
-	void			(*handler)(int, short, void *);
-	struct event		 ev;
-	void			*data;
-	short			 events;
 };
 
 struct ctl_conn {

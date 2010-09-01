@@ -245,10 +245,9 @@ ldap_auth_sasl(struct request *req, char *binddn, struct ber_element *params)
 	auth_req.msgid = req->msgid;
 	bzero(password, strlen(password));
 
-	if (imsg_compose(&iev_ldapd->ibuf, IMSG_LDAPD_AUTH, 0, 0, -1, &auth_req,
+	if (imsgev_compose(iev_ldapd, IMSG_LDAPD_AUTH, 0, 0, -1, &auth_req,
 	    sizeof(auth_req)) == -1)
 		return LDAP_OPERATIONS_ERROR;
-	imsg_event_add(iev_ldapd);
 
 	req->conn->bind_req = req;
 

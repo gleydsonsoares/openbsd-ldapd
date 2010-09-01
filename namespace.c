@@ -151,7 +151,7 @@ namespace_reopen(const char *path)
 		return -1;
 	}
 
-	return imsg_compose_event(iev_ldapd, IMSG_LDAPD_OPEN, 0, 0, -1, &req,
+	return imsgev_compose(iev_ldapd, IMSG_LDAPD_OPEN, 0, 0, -1, &req,
 	    sizeof(req));
 }
 
