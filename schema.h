@@ -36,6 +36,14 @@ struct name {
 };
 SLIST_HEAD(name_list, name);
 
+struct schema;
+struct syntax {
+	char			*oid;
+	char			*desc;
+	int			(*is_valid)(struct schema *schema, char *value,
+					size_t len);
+};
+
 struct attr_type {
 	RB_ENTRY(attr_type)	 link;
 	char			*oid;
@@ -46,7 +54,7 @@ struct attr_type {
 	char			*equality;
 	char			*ordering;
 	char			*substr;
-	char			*syntax;
+	const struct syntax	*syntax;
 	int			 single;
 	int			 collective;
 	int			 immutable;	/* no-user-modification */
@@ -141,7 +149,11 @@ struct attr_type	*lookup_attribute(struct schema *schema, char *oid_or_name);
 struct object		*lookup_object_by_oid(struct schema *schema, char *oid);
 struct object		*lookup_object_by_name(struct schema *schema, char *name);
 struct object		*lookup_object(struct schema *schema, char *oid_or_name);
+char			*lookup_symbolic_oid(struct schema *schema, char *name);
 int			 is_oidstr(const char *oidstr);
+
+/* syntax.c */
+const struct syntax	*syntax_lookup(const char *oid);
 
 #endif
 
