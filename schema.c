@@ -799,6 +799,27 @@ schema_parse_attributetype(struct schema *schema)
 		goto fail;
 	}
 
+	/* If the attribute type doesn't explicitly define equality, check
+	 * if any superior attribute type does.
+	 */
+	sup = attr->sup;
+	while (attr->equality == NULL && sup != NULL) {
+		attr->equality = sup->equality;
+		sup = sup->sup;
+	} 
+	/* Same thing with ordering matching rule. */
+	sup = attr->sup;
+	while (attr->ordering == NULL && sup != NULL) {
+		attr->ordering = sup->ordering;
+		sup = sup->sup;
+	} 
+	/* ...and substring matching rule. */
+	sup = attr->sup;
+	while (attr->substr == NULL && sup != NULL) {
+		attr->substr = sup->substr;
+		sup = sup->sup;
+	} 
+
 	return 0;
 
 fail:
