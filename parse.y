@@ -307,18 +307,18 @@ aci_type	: DENY				{ $$ = ACI_DENY; }
 		| ALLOW				{ $$ = ACI_ALLOW; }
 		;
 
-aci_access	: /* empty */			{ $$ = ACI_ALL; };
-		| ACCESS			{ $$ = ACI_ALL; };
-		| aci_rights ACCESS		{ $$ = $1; };
+aci_access	: /* empty */			{ $$ = ACI_ALL; }
+		| ACCESS			{ $$ = ACI_ALL; }
+		| aci_rights ACCESS		{ $$ = $1; }
 		;
 
 aci_rights	: aci_right			{ $$ = $1; }
 		| aci_rights ',' aci_right	{ $$ = $1 | $3; }
 		;
 
-aci_right	: READ				{ $$ = ACI_READ; };
-		| WRITE				{ $$ = ACI_WRITE; };
-		| BIND				{ $$ = ACI_BIND; };
+aci_right	: READ				{ $$ = ACI_READ; }
+		| WRITE				{ $$ = ACI_WRITE; }
+		| BIND				{ $$ = ACI_BIND; }
 		;
 
 
