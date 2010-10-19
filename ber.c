@@ -1067,7 +1067,7 @@ ber_read_element(struct ber *ber, struct ber_element *elm)
 
 	/* If using an external buffer and the total size of the element
 	 * is larger then the external buffer don't bother to continue. */
-	if (ber->fd == -1 && totlen > ber->br_rend - ber->br_rbuf) {
+	if (ber->fd == -1 && len > ber->br_rend - ber->br_rptr) {
 		errno = ECANCELED;
 		return -1;
 	}
