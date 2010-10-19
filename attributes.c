@@ -99,7 +99,9 @@ ldap_add_attribute(struct ber_element *entry, const char *attr,
 	}
 
 	last = entry->be_sub;
-	while (last && last->be_next != NULL)
+	if (last == NULL)
+		last = entry;
+	else while (last != NULL && last->be_next != NULL)
 		last = last->be_next;
 
 	if ((elm = ber_add_sequence(last)) == NULL)
