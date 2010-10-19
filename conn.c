@@ -68,6 +68,7 @@ conn_close(struct conn *conn)
 		bufferevent_free(conn->bev);
 	close(conn->fd);
 	free(conn->binddn);
+	free(conn->pending_binddn);
 	free(conn);
 
 	--stats.conns;

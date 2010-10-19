@@ -210,6 +210,7 @@ struct conn
 	int			 disconnect;
 	struct request		*bind_req;	/* ongoing bind request */
 	char			*binddn;
+	char			*pending_binddn;
 	TAILQ_HEAD(, search)	 searches;
 	struct listener		*listener;	/* where it connected from */
 
