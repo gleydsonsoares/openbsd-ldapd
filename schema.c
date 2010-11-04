@@ -1333,3 +1333,18 @@ schema_dump_attribute(struct attr_type *at, char *buf, size_t size)
 	return 0;
 }
 
+int
+schema_dump_match_rule(struct match_rule *mr, char *buf, size_t size)
+{
+	if (strlcpy(buf, "( ", size) >= size ||
+	    strlcat(buf, mr->oid, size) >= size ||
+	    strlcat(buf, " NAME '", size) >= size ||
+	    strlcat(buf, mr->name, size) >= size ||
+	    strlcat(buf, "' SYNTAX ", size) >= size ||
+	    strlcat(buf, mr->syntax_oid, size) >= size ||
+	    strlcat(buf, " )", size) >= size)
+		return -1;
+
+	return 0;
+}
+
