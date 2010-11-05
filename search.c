@@ -951,9 +951,14 @@ ldap_search(struct request *req)
 			btval_reset(&val);
 			reason = LDAP_SUCCESS;
 		} else if (errno == ENOENT)
-			reason = LDAP_SUCCESS;
+			reason = LDAP_NO_SUCH_OBJECT;
 		else
 			reason = LDAP_OTHER;
+		goto done;
+	}
+
+	if (!namespace_exists(search->ns, search->basedn)) {
+		reason = LDAP_NO_SUCH_OBJECT;
 		goto done;
 	}
 
