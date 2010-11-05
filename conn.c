@@ -180,7 +180,7 @@ conn_read(struct bufferevent *bev, void *data)
 
 	while (conn->ber.br_rend - conn->ber.br_rptr > 0) {
 		if (conn_dispatch(conn) == 0)
-			nused += conn->ber.br_rptr - conn->ber.br_rbuf;
+			nused = conn->ber.br_rptr - conn->ber.br_rbuf;
 		else
 			break;
 	}
