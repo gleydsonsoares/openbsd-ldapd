@@ -152,7 +152,7 @@ main(int argc, char *argv[])
 			csockpath = optarg;
 			break;
 		case 'v':
-			verbose = 1;
+			verbose++;
 			break;
 		default:
 			usage();

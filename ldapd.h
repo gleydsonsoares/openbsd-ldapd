@@ -472,6 +472,9 @@ __dead void		 fatal(const char *);
 __dead void		 fatalx(const char *);
 const char		*print_host(struct sockaddr_storage *ss, char *buf,
 				size_t len);
+void			 hexdump(void *data, size_t len, const char *fmt, ...);
+void			 ldap_debug_elements(struct ber_element *root,
+			    int context, const char *fmt, ...);
 
 /* util.c */
 int			 bsnprintf(char *str, size_t size,

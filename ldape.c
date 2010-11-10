@@ -88,6 +88,8 @@ send_ldap_extended_response(struct conn *conn, int msgid, unsigned long type,
 		if (ber_add_string(elm, extended_oid) == NULL)
 			goto fail;
 
+	ldap_debug_elements(root, type, "sending response on fd %d", conn->fd);
+
 	rc = ber_write_elements(&conn->ber, root);
 	ber_free_elements(root);
 

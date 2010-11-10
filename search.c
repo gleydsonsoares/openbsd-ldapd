@@ -134,6 +134,9 @@ search_result(const char *dn, size_t dnlen, struct ber_element *attrs,
 	if (elm == NULL)
 		goto fail;
 
+	ldap_debug_elements(root, LDAP_RES_SEARCH_ENTRY,
+	    "sending search entry on fd %d", conn->fd);
+
 	rc = ber_write_elements(&conn->ber, root);
 	ber_free_elements(root);
 
