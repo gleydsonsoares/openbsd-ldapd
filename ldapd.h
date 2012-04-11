@@ -200,6 +200,7 @@ struct listener {
 	int			 port;
 	int			 fd;
 	struct event		 ev;
+	struct event		 evt;
 	char			 ssl_cert_name[PATH_MAX];
 	struct ssl		*ssl;
 	void			*ssl_ctx;
@@ -209,8 +210,7 @@ TAILQ_HEAD(listenerlist, listener);
 
 /* An LDAP client connection.
  */
-struct conn
-{
+struct conn {
 	TAILQ_ENTRY(conn)	 next;
 	int			 fd;
 	struct bufferevent	*bev;
@@ -323,6 +323,7 @@ extern  struct ctl_connlist ctl_conns;
 struct control_sock {
 	const char		*cs_name;
 	struct event		 cs_ev;
+	struct event		 cs_evt;
 	int			 cs_fd;
 	int			 cs_restricted;
 };
