@@ -36,12 +36,15 @@ and extend to the end of the current line.
 Care should be taken when commenting out multi-line text:
 the comment is effective until the end of the entire block.
 .Pp
+.Pp
+Argument names not beginning with a letter, digit, or underscore
+must be quoted.
 Arguments containing whitespace should be surrounded by double quotes
 .Pq \&" .
 .Pp
 Macros can be defined that will later be expanded in context.
-Macro names must start with a letter, and may contain letters, digits
-and underscores.
+Macro names must start with a letter, digit, or underscore,
+and may contain any of those characters.
 Macro names may not be reserved words (for example
 .Ar listen ,
 .Ar namespace ,
