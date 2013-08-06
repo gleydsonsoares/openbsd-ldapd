@@ -17,6 +17,10 @@ CFLAGS+=	-Wshadow -Wpointer-arith -Wcast-qual
 CFLAGS+=	-Wsign-compare
 CLEANFILES+=	y.tab.h parse.c
 
+.if ${MACHINE} == "vax"
+LDFLAGS+=-Wl,--no-keep-memory
+.endif
+
 SCHEMA_FILES=	core.schema \
 		inetorgperson.schema \
 		nis.schema
