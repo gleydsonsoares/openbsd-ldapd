@@ -92,7 +92,9 @@ Verify the password against the
 .Xr crypt 3
 hash.
 .It Ic {BSDAUTH}username
-Use BSD Authentication with the given username and authentication style
+Use
+.Bx
+Authentication with the given username and authentication style
 .Dq auth-ldap .
 This is similar to using SASL PLAIN authentication with
 .Ar username
@@ -106,7 +108,9 @@ Without a prefix, the
 attribute is compared literally with the provided plain text password.
 .Pp
 When using SASL binds, the authentication ID should be a valid
-username for BSD Authentication.
+username for
+.Bx
+Authentication.
 .Pp
 For plain text passwords to be accepted, the connection must be
 considered secure, either by using an encrypted connection, or by
