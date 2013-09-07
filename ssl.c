@@ -40,7 +40,7 @@
 
 #include "ldapd.h"
 
-#define SSL_CIPHERS	"HIGH"
+#define SSL_CIPHERS	"HIGH:!aNULL"
 
 void	 ssl_error(const char *);
 char	*ssl_load_file(const char *, off_t *);
