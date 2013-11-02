@@ -130,7 +130,7 @@ ber2db(struct ber_element *root, struct btval *val, int compression_level)
 		destlen = val->size - sizeof(uint32_t);
 		if ((rc = compress2(dest, &destlen, buf, len,
 		    compression_level)) != Z_OK) {
-			log_warn("compress returned %i", rc);
+			log_warn("compress returned %d", rc);
 			free(val->data);
 			ber_free(&ber);
 			return -1;
@@ -183,7 +183,7 @@ db2ber(struct btval *val, int compression_level)
 		srclen = val->size - sizeof(uint32_t);
 		rc = uncompress(buf, &len, src, srclen);
 		if (rc != Z_OK) {
-			log_warnx("dbt_to_ber: uncompress returned %i", rc);
+			log_warnx("dbt_to_ber: uncompress returned %d", rc);
 			free(buf);
 			return NULL;
 		}

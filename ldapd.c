@@ -106,7 +106,7 @@ fd_nonblock(int fd)
 	int flags = fcntl(fd, F_GETFL, 0);
 	int rc = fcntl(fd, F_SETFL, flags | O_NONBLOCK);
 	if (rc == -1) {
-		log_warn("failed to set fd %i non-blocking", fd);
+		log_warn("failed to set fd %d non-blocking", fd);
 	}
 }
 
@@ -233,7 +233,7 @@ ldapd_imsgev(struct imsgev *iev, int code, struct imsg *imsg)
 {
 	switch (code) {
 	case IMSGEV_IMSG:
-		log_debug("%s: got imsg %i on fd %i",
+		log_debug("%s: got imsg %d on fd %d",
 		    __func__, imsg->hdr.type, iev->ibuf.fd);
 		switch (imsg->hdr.type) {
 		case IMSG_LDAPD_AUTH:

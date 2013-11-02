@@ -83,7 +83,8 @@ vlog(int pri, const char *fmt, va_list ap)
 		rc = strftime(datebuf, sizeof(datebuf), "%b %e %H:%M:%S", tm);
 		if (rc == 0)
 			datebuf[0] = 0;
-		fprintf(stderr, "%s.%03li [%i] ", datebuf, tv.tv_usec / 1000, getpid());
+		fprintf(stderr, "%s.%03ld [%d] ", datebuf,
+		    tv.tv_usec / 1000, getpid());
 
 		/* best effort in out of mem situations */
 		if (asprintf(&nfmt, "%s\n", fmt) == -1) {
