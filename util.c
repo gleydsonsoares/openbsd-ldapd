@@ -67,7 +67,7 @@ normalize_dn(char *dn)
 			if (s[n] == '\0' || s[n] == ',')
 				continue;
 		}
-		*p++ = tolower(*s);
+		*p++ = tolower((unsigned char)*s);
 	}
 	*p = '\0';
 }
