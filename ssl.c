@@ -37,6 +37,8 @@
 #include <openssl/ssl.h>
 #include <openssl/engine.h>
 #include <openssl/err.h>
+#include <openssl/dh.h>
+#include <openssl/bn.h>
 
 #include "ldapd.h"
 
