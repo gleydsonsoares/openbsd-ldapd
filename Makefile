@@ -27,4 +27,3 @@ distribution:
 	done
 
 .include <bsd.prog.mk>
-
