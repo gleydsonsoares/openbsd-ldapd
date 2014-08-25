@@ -298,7 +298,7 @@ ldapd_auth_classful(char *name, char *password)
 		auth_setitem(as, AUTHV_SERVICE, "response");
 		auth_setdata(as, "", 1);
 		auth_setdata(as, password, strlen(password) + 1);
-		memset(password, 0, strlen(password));
+		explicit_bzero(password, strlen(password));
 	} else
 		as = NULL;
 
