@@ -526,8 +526,8 @@ namespace_cancel_conn(struct conn *conn)
 	struct request		*req, *next;
 
 	TAILQ_FOREACH(ns, &conf->namespaces, next) {
-		for (req = TAILQ_FIRST(&ns->request_queue);
-		    req != TAILQ_END(&ns->request_queue); req = next) {
+		for (req = TAILQ_FIRST(&ns->request_queue); req != NULL;
+		    req = next) {
 			next = TAILQ_NEXT(req, next);
 
 			if (req->conn == conn) {
