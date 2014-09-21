@@ -1131,9 +1131,9 @@ mk_aci(int type, int rights, enum scope scope, char *target, char *subject)
 	log_debug("%s %02X access to %s scope %d by %s",
 	    aci->type == ACI_DENY ? "deny" : "allow",
 	    aci->rights,
-	    aci->target ?: "any",
+	    aci->target ? aci->target : "any",
 	    aci->scope,
-	    aci->subject ?: "any");
+	    aci->subject ? aci->subject : "any");
 
 	return aci;
 }
