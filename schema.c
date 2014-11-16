@@ -441,15 +441,14 @@ static void
 schema_err(struct schema *schema, const char *fmt, ...)
 {
 	va_list		 ap;
-	char		*nfmt;
+	char		*msg;
 
 	va_start(ap, fmt);
-	if (asprintf(&nfmt, "%s:%d: %s", schema->filename, schema->lineno,
-	    fmt) == -1)
-		fatal("asprintf");
-	vlog(LOG_CRIT, nfmt, ap);
+	if (vasprintf(&msg, fmt, ap) == -1)
+		fatal("vasprintf");
 	va_end(ap);
-	free(nfmt);
+	logit(LOG_CRIT, "%s:%d: %s", schema->filename, schema->lineno, msg);
+	free(msg);
 
 	schema->error++;
 }
