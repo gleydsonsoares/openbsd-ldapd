@@ -20,7 +20,6 @@
 #include <sys/types.h>
 #include <sys/queue.h>
 #include <sys/tree.h>
-#include <sys/param.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/time.h>
@@ -39,6 +38,8 @@
 #include <openssl/err.h>
 #include <openssl/dh.h>
 #include <openssl/bn.h>
+
+#define MINIMUM(a, b)	(((a) < (b)) ? (a) : (b))
 
 #include "ldapd.h"
 
@@ -78,7 +79,7 @@ ssl_read(int fd, short event, void *p)
 	}
 
 	if (bufev->wm_read.high != 0)
-		howmuch = MIN(sizeof(rbuf), bufev->wm_read.high);
+		howmuch = MINIMUM(sizeof(rbuf), bufev->wm_read.high);
 
 	ret = SSL_read(s->s_ssl, rbuf, howmuch);
 	if (ret <= 0) {

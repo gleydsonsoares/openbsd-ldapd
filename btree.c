@@ -20,7 +20,6 @@
 #include <sys/tree.h>
 #include <sys/stat.h>
 #include <sys/queue.h>
-#include <sys/param.h>
 #include <sys/uio.h>
 
 #include <assert.h>

@@ -24,7 +24,6 @@
 #include <sys/tree.h>
 #include <sys/types.h>
 #include <sys/uio.h>
-#include <sys/param.h>
 
 #include <event.h>
 #include <imsg.h>
@@ -285,7 +284,7 @@ struct auth_res
 };
 
 struct open_req {
-	char			 path[MAXPATHLEN+1];
+	char			 path[PATH_MAX+1];
 	unsigned int		 rdonly;
 };
 

@@ -530,7 +530,7 @@ ldape_open_result(struct imsg *imsg)
 		fatal("invalid size of open result");
 
 	/* make sure path is null-terminated */
-	oreq->path[MAXPATHLEN] = '\0';
+	oreq->path[PATH_MAX] = '\0';
 
 	log_debug("open(%s) returned fd %d", oreq->path, imsg->fd);
 
