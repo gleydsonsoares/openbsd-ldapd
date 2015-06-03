@@ -3071,7 +3071,10 @@ btree_compact(struct btree *bt)
 	if ((txn = btree_txn_begin(bt, 0)) == NULL)
 		return BT_FAIL;
 
-	asprintf(&compact_path, "%s.compact.XXXXXX", bt->path);
+	if (asprintf(&compact_path, "%s.compact.XXXXXX", bt->path) == -1) {
+		btree_txn_abort(txn);
+		return BT_FAIL;
+	}
 	fd = mkstemp(compact_path);
 	if (fd == -1) {
 		free(compact_path);
