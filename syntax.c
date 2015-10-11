@@ -142,7 +142,7 @@ syntax_is_printable_string(struct schema *schema, char *value, size_t len)
 	char		*p;
 
 	for (p = value; len > 0 && *p != '\0'; p++, len--) {
-		if (!isalnum(*p) && strchr(special, *p) == NULL)
+		if (!isalnum((unsigned char)*p) && strchr(special, *p) == NULL)
 			return 0;
 	}
 
