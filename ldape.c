@@ -445,6 +445,9 @@ ldape(struct passwd *pw, char *csockpath, int pipe_parent2ldap[2])
 			fatal("cannot drop privileges");
 	}
 
+	if (pledge("stdio flock inet unix recvfd", NULL) == -1)
+		fatal("pledge");
+
 	log_debug("ldape: entering event loop");
 	event_dispatch();
 
