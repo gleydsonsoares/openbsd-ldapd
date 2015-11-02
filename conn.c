@@ -291,8 +291,6 @@ conn_accept(int fd, short event, void *data)
 		log_debug("accepted connection from %s on fd %d", host, afd);
 	}
 
-	fd_nonblock(afd);
-
 	if ((conn = calloc(1, sizeof(*conn))) == NULL) {
 		log_warn("malloc");
 		goto giveup;

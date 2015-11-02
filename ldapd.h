@@ -332,7 +332,6 @@ struct control_sock {
 extern struct ldapd_stats	 stats;
 extern struct ldapd_config	*conf;
 
-void			 fd_nonblock(int fd);
 void			 imsg_event_add(struct imsgev *iev);
 int			 imsg_compose_event(struct imsgev *iev, u_int16_t type,
 			    u_int32_t peerid, pid_t pid, int fd, void *data,

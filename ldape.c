@@ -383,7 +383,8 @@ ldape(struct passwd *pw, char *csockpath, int pipe_parent2ldap[2])
 	/* Initialize LDAP listeners.
 	 */
 	TAILQ_FOREACH(l, &conf->listeners, entry) {
-		l->fd = socket(l->ss.ss_family, SOCK_STREAM, 0);
+		l->fd = socket(l->ss.ss_family, SOCK_STREAM | SOCK_NONBLOCK,
+		    0);
 		if (l->fd < 0)
 			fatal("ldape: socket");
 
@@ -418,8 +419,6 @@ ldape(struct passwd *pw, char *csockpath, int pipe_parent2ldap[2])
 
 		if (listen(l->fd, 20) != 0)
 			fatal("ldape: listen");
-
-		fd_nonblock(l->fd);
 
 		event_set(&l->ev, l->fd, EV_READ, conn_accept, l);
 		event_add(&l->ev, NULL);

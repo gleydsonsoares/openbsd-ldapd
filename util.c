@@ -210,5 +210,5 @@ accept_reserve(int sockfd, struct sockaddr *addr, socklen_t *addrlen,
 		return -1;
 	}
 
-	return accept(sockfd, addr, addrlen);
+	return accept4(sockfd, addr, addrlen, SOCK_NONBLOCK);
 }
