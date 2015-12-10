@@ -1224,8 +1224,7 @@ ber_set_application(struct ber *b, unsigned long (*cb)(struct ber_element *))
 void
 ber_free(struct ber *b)
 {
-	if (b->br_wbuf != NULL)
-		free (b->br_wbuf);
+	free(b->br_wbuf);
 }
 
 static ssize_t

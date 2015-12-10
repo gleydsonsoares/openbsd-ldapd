@@ -252,8 +252,7 @@ ssl_load_file(const char *name, off_t *len)
 	return (buf);
 
 fail:
-	if (buf != NULL)
-		free(buf);
+	free(buf);
 	close(fd);
 	return (NULL);
 }
