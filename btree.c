@@ -784,7 +784,7 @@ btree_txn_commit(struct btree_txn *txn)
 		n = 0;
 		done = 1;
 		SIMPLEQ_FOREACH(mp, txn->dirty_queue, next) {
-			DPRINTF("commiting page %u", mp->pgno);
+			DPRINTF("committing page %u", mp->pgno);
 			iov[n].iov_len = bt->head.psize;
 			iov[n].iov_base = mp->page;
 			if (++n >= BT_COMMIT_PAGES) {
@@ -796,7 +796,7 @@ btree_txn_commit(struct btree_txn *txn)
 		if (n == 0)
 			break;
 
-		DPRINTF("commiting %u dirty pages", n);
+		DPRINTF("committing %u dirty pages", n);
 		rc = writev(bt->fd, iov, n);
 		if (rc != (ssize_t)bt->head.psize*n) {
 			if (rc > 0)
