@@ -374,7 +374,7 @@ ldape(struct passwd *pw, char *csockpath, int pipe_parent2ldap[2])
 	    ldape_needfd);
 
 	/* Initialize control socket. */
-	bzero(&csock, sizeof(csock));
+	memset(&csock, 0, sizeof(csock));
 	csock.cs_name = csockpath;
 	control_init(&csock);
 	control_listen(&csock);

@@ -95,7 +95,7 @@ index_attribute(struct namespace *ns, char *attr, struct btval *dn,
 	assert(dn);
 	assert(a);
 	assert(a->be_next);
-	bzero(&val, sizeof(val));
+	memset(&val, 0, sizeof(val));
 
 	log_debug("indexing %.*s on %s", (int)dn->size, (char *)dn->data, attr);
 
@@ -104,7 +104,7 @@ index_attribute(struct namespace *ns, char *attr, struct btval *dn,
 	for (v = a->be_next->be_sub; v; v = v->be_next) {
 		if (ber_get_string(v, &s) != 0)
 			continue;
-		bzero(&key, sizeof(key));
+		memset(&key, 0, sizeof(key));
 		key.size = asprintf(&t, "%s=%s,%.*s", attr, s, dnsz,
 		    (char *)dn->data);
 		if (key.size == (size_t)-1)
@@ -127,7 +127,7 @@ index_rdn_key(struct namespace *ns, struct btval *dn, struct btval *key)
 	int		 dnsz, rdnsz, pdnsz;
 	char		*t, *parent_dn;
 
-	bzero(key, sizeof(*key));
+	memset(key, 0, sizeof(*key));
 
 	dnsz = dn->size - strlen(ns->suffix);
 	if (dnsz-- == 0)
@@ -161,7 +161,7 @@ index_rdn(struct namespace *ns, struct btval *dn)
 	struct btval	 key, val;
 	int		 rc;
 
-	bzero(&val, sizeof(val));
+	memset(&val, 0, sizeof(val));
 
 	assert(ns);
 	assert(ns->indx_txn);
@@ -202,7 +202,7 @@ unindex_attribute(struct namespace *ns, char *attr, struct btval *dn,
 	for (v = a->be_next->be_sub; v; v = v->be_next) {
 		if (ber_get_string(v, &s) != 0)
 			continue;
-		bzero(&key, sizeof(key));
+		memset(&key, 0, sizeof(key));
 		key.size = asprintf(&t, "%s=%s,%.*s", attr, s, dnsz,
 		    (char *)dn->data);
 		key.data = t;

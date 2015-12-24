@@ -164,7 +164,7 @@ send_auth_request(struct request *req, const char *username,
 {
 	struct auth_req	 auth_req;
 
-	bzero(&auth_req, sizeof(auth_req));
+	memset(&auth_req, 0, sizeof(auth_req));
 	if (strlcpy(auth_req.name, username,
 	    sizeof(auth_req.name)) >= sizeof(auth_req.name))
 		goto fail;
@@ -182,7 +182,7 @@ send_auth_request(struct request *req, const char *username,
 	return 0;
 
 fail:
-	bzero(&auth_req, sizeof(auth_req));
+	memset(&auth_req, 0, sizeof(auth_req));
 	return -1;
 }
 

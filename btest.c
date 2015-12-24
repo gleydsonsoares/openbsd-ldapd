@@ -57,9 +57,9 @@ main(int argc, char **argv)
 	if (bt == NULL)
 		err(1, filename);
 
-	bzero(&key, sizeof(key));
-	bzero(&data, sizeof(data));
-	bzero(&maxkey, sizeof(maxkey));
+	memset(&key, 0, sizeof(key));
+	memset(&data, 0, sizeof(data));
+	memset(&maxkey, 0, sizeof(maxkey));
 
 	if (strcmp(argv[0], "put") == 0) {
 		if (argc < 3)

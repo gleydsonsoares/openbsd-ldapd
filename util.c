@@ -109,9 +109,9 @@ ber2db(struct ber_element *root, struct btval *val, int compression_level)
 	void			*buf;
 	struct ber		 ber;
 
-	bzero(val, sizeof(*val));
+	memset(val, 0, sizeof(*val));
 
-	bzero(&ber, sizeof(ber));
+	memset(&ber, 0, sizeof(ber));
 	ber.fd = -1;
 	ber_write_elements(&ber, root);
 
@@ -166,7 +166,7 @@ db2ber(struct btval *val, int compression_level)
 
 	assert(val != NULL);
 
-	bzero(&ber, sizeof(ber));
+	memset(&ber, 0, sizeof(ber));
 	ber.fd = -1;
 
 	if (compression_level > 0) {

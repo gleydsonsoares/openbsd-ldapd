@@ -72,7 +72,7 @@ ldap_delete(struct request *req)
 	if ((cursor = btree_txn_cursor_open(NULL, ns->data_txn)) == NULL)
 		goto done;
 
-	bzero(&key, sizeof(key));
+	memset(&key, 0, sizeof(key));
 	key.data = dn;
 	key.size = strlen(dn);
 	if (btree_cursor_get(cursor, &key, NULL, BT_CURSOR_EXACT) != 0) {
