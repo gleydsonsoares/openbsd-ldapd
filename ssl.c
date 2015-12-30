@@ -392,8 +392,7 @@ ssl_setup(struct ldapd_config *env, struct listener *l)
 	return;
 
 err:
-	if (l->ssl_ctx != NULL)
-		SSL_CTX_free(l->ssl_ctx);
+	SSL_CTX_free(l->ssl_ctx);
 	ssl_error("ssl_setup");
 	fatal("ssl_setup: cannot set SSL up");
 }
@@ -501,8 +500,7 @@ ssl_session_init(struct conn *s)
 	return;
 
  err:
-	if (ssl != NULL)
-		SSL_free(ssl);
+	SSL_free(ssl);
 	ssl_error("ssl_session_init");
 }
 
