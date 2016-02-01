@@ -27,6 +27,7 @@
 .Fl D Ar macro Ns = Ns Ar value
 .Oc
 .Op Fl f Ar file
+.Op Fl r Ar directory
 .Op Fl s Ar file
 .Sh DESCRIPTION
 .Nm
@@ -57,14 +58,14 @@ Use
 .Ar file
 as the configuration file, instead of the default
 .Pa /etc/ldapd.conf .
-.It Fl r Ar directory
-Store and read database files in
-.Ar directory
-, instead of the default
-.Pa /var/db/ldap .
 .It Fl n
 Configtest mode.
 Only check the configuration file for validity.
+.It Fl r Ar directory
+Store and read database files in
+.Ar directory ,
+instead of the default
+.Pa /var/db/ldap .
 .It Fl s Ar file
 Specify an alternative location for the socket file.
 .It Fl v
