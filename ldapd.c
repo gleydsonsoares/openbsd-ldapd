@@ -51,7 +51,7 @@ static void	 ldapd_cleanup(char *);
 
 struct ldapd_stats	 stats;
 pid_t			 ldape_pid;
-char *			 datadir;
+const char		*datadir = DATADIR;
 
 void
 usage(void)
@@ -120,7 +120,6 @@ main(int argc, char *argv[])
 	struct event		 ev_sighup;
 	struct stat		 sb;
 
-	datadir = DATADIR;
 	log_init(1);		/* log to stderr until daemonized */
 
 	while ((c = getopt(argc, argv, "dhvD:f:nr:s:")) != -1) {

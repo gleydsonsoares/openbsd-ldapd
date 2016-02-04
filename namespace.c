@@ -28,6 +28,8 @@
 
 #include "ldapd.h"
 
+extern const char	*datadir;
+
 /* Maximum number of requests to queue per namespace during compaction.
  * After this many requests, we return LDAP_BUSY.
  */
@@ -38,7 +40,6 @@ static void		 namespace_queue_replay(int fd, short event, void *arg);
 static int		 namespace_set_fd(struct namespace *ns,
 			    struct btree **bt, int fd, unsigned int flags);
 
-extern char		*datadir;
 int
 namespace_begin_txn(struct namespace *ns, struct btree_txn **data_txn,
     struct btree_txn **indx_txn, int rdonly)
