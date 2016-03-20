@@ -1083,7 +1083,7 @@ btree_open_fd(int fd, unsigned int flags)
 	struct btree	*bt;
 	int		 fl;
 
-	fl = fcntl(fd, F_GETFL, 0);
+	fl = fcntl(fd, F_GETFL);
 	if (fcntl(fd, F_SETFL, fl | O_APPEND) == -1)
 		return NULL;
 
