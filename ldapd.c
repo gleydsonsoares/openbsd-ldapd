@@ -163,7 +163,7 @@ main(int argc, char *argv[])
 
 	log_verbose(verbose);
 	stats.started_at = time(0);
-	ssl_init();
+	tls_init();
 
 	if (parse_config(conffile) != 0)
 		exit(2);
