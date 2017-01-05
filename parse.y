@@ -814,8 +814,7 @@ parse_config(char *filename)
 	popfile();
 
 	/* Free macros and check which have not been used. */
-	for (sym = TAILQ_FIRST(&symhead); sym != NULL; sym = next) {
-		next = TAILQ_NEXT(sym, entry);
+	TAILQ_FOREACH_SAFE(sym, &symhead, entry, next) {
 		log_debug("warning: macro \"%s\" not used", sym->nam);
 		if (!sym->persist) {
 			free(sym->nam);
