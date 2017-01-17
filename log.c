@@ -77,7 +77,7 @@ vlog(int pri, const char *fmt, va_list ap)
 	time_t		 now;
 
 	if (debug) {
-		gettimeofday(&tv, NULL); 
+		gettimeofday(&tv, NULL);
 		now = tv.tv_sec;
 		tm = localtime(&now);
 		rc = strftime(datebuf, sizeof(datebuf), "%b %e %H:%M:%S", tm);
