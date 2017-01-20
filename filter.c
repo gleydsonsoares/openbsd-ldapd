@@ -23,6 +23,7 @@
 #include <stdint.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 static int	 ldap_filt_eq(struct ber_element *root, struct plan *plan);
 static int	 ldap_filt_subs(struct ber_element *root, struct plan *plan);

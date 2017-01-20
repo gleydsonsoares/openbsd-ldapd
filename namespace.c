@@ -27,6 +27,7 @@
 #include <zlib.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 extern const char	*datadir;
 

@@ -27,6 +27,7 @@
 #include <time.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 #define	MAX_SEARCHES	 200
 

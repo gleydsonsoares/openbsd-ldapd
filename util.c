@@ -32,6 +32,7 @@
 #include <errno.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 int
 bsnprintf(char *str, size_t size, const char *format, ...)

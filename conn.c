@@ -24,6 +24,7 @@
 #include <unistd.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 int			 conn_dispatch(struct conn *conn);
 int			 conn_tls_init(struct conn *);

@@ -464,23 +464,12 @@ int			 ssl_cmp(struct ssl *, struct ssl *);
 SPLAY_PROTOTYPE(ssltree, ssl, ssl_nodes, ssl_cmp);
 
 
-/* log.c */
-void			 log_init(int);
-void			 log_verbose(int v);
-void			 vlog(int, const char *, va_list);
-void			 logit(int pri, const char *fmt, ...);
-void			 log_warn(const char *, ...);
-void			 log_warnx(const char *, ...);
-void			 log_info(const char *, ...);
-void			 log_debug(const char *, ...);
-__dead void		 fatal(const char *);
-__dead void		 fatalx(const char *);
+/* logmsg.c */
 const char		*print_host(struct sockaddr_storage *ss, char *buf,
 				size_t len);
 void			 hexdump(void *data, size_t len, const char *fmt, ...);
 void			 ldap_debug_elements(struct ber_element *root,
 			    int context, const char *fmt, ...);
-
 /* util.c */
 int			 bsnprintf(char *str, size_t size,
 				const char *format, ...);

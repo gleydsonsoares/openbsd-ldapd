@@ -25,6 +25,7 @@
 #include <string.h>
 
 #include "ldapd.h"
+#include "log.h"
 #include "uuid.h"
 
 int

@@ -24,6 +24,7 @@
 #include <syslog.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 #define ERROR	-1
 #define STRING	 1

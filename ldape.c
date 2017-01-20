@@ -31,6 +31,7 @@
 #include <unistd.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 void			 ldape_sig_handler(int fd, short why, void *data);
 static void		 ldape_auth_result(struct imsg *imsg);

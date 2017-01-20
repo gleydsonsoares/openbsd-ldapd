@@ -45,6 +45,7 @@
 #include <unistd.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 TAILQ_HEAD(files, file)		 files = TAILQ_HEAD_INITIALIZER(files);
 static struct file {

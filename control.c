@@ -35,6 +35,7 @@
 #include <unistd.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 #define	CONTROL_BACKLOG	5
 

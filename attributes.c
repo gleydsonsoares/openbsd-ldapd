@@ -24,6 +24,7 @@
 #include <time.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 struct ber_element *
 ldap_get_attribute(struct ber_element *entry, const char *attr)

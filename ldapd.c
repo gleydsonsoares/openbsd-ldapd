@@ -38,6 +38,7 @@
 #include <unistd.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 void		 usage(void);
 void		 ldapd_sig_handler(int fd, short why, void *data);

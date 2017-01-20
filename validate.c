@@ -23,6 +23,7 @@
 #include <string.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 static int
 validate_required_attributes(struct ber_element *entry, struct object *obj)

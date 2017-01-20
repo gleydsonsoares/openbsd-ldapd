@@ -79,6 +79,7 @@
 #include <string.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 static int
 index_attribute(struct namespace *ns, char *attr, struct btval *dn,

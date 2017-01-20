@@ -29,6 +29,7 @@
 #include <unistd.h>
 
 #include "ldapd.h"
+#include "log.h"
 
 static int
 aci_matches(struct aci *aci, struct conn *conn, struct namespace *ns,
