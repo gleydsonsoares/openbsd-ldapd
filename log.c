@@ -16,6 +16,7 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#include <sys/time.h>
 #include <errno.h>
 #include <stdarg.h>
 #include <stdio.h>
