@@ -826,6 +826,19 @@ ber_read_elements(struct ber *ber, struct ber_element *elm)
 }
 
 void
+ber_free_element(struct ber_element *root)
+{
+	if (root->be_sub && (root->be_encoding == BER_TYPE_SEQUENCE ||
+	    root->be_encoding == BER_TYPE_SET))
+		ber_free_elements(root->be_sub);
+	if (root->be_free && (root->be_encoding == BER_TYPE_OCTETSTRING ||
+	    root->be_encoding == BER_TYPE_BITSTRING ||
+	    root->be_encoding == BER_TYPE_OBJECT))
+		free(root->be_val);
+	free(root);
+}
+
+void
 ber_free_elements(struct ber_element *root)
 {
 	if (root->be_sub && (root->be_encoding == BER_TYPE_SEQUENCE ||

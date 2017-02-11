@@ -296,11 +296,20 @@ ldap_modify(struct request *req)
 			}
 			break;
 		case LDAP_MOD_DELETE:
+			/*
+			 * We're already in the "SET OF value
+			 * AttributeValue" (see RFC2411 section
+			 * 4.1.7) have either EOC, so all values
+			 * for the attribute gets deleted, or we
+			 * have a (first) octetstring (there is one
+			 * for each AttributeValue to be deleted)
+			 */
 			if (vals->be_sub &&
-			    vals->be_sub->be_type == BER_TYPE_SET)
+			    vals->be_sub->be_type == BER_TYPE_OCTETSTRING) {
 				ldap_del_values(a, vals);
-			else
+			} else {
 				ldap_del_attribute(entry, attr);
+			}
 			break;
 		case LDAP_MOD_REPLACE:
 			if (vals->be_sub != NULL &&
