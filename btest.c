@@ -74,7 +74,7 @@ main(int argc, char **argv)
 		else
 			printf("FAIL\n");
 	} else if (strcmp(argv[0], "del") == 0) {
-		if (argc < 1)
+		if (argc < 2)
 			errx(1, "missing argument");
 		key.data = argv[1];
 		key.size = strlen(key.data);
