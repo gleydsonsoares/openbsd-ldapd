@@ -327,6 +327,13 @@ struct control_sock {
 	int			 cs_restricted;
 };
 
+enum ldapd_process {
+	PROC_MAIN_AUTH,
+	PROC_LDAP_SERVER
+};
+
+#define PROC_PARENT_SOCK_FILENO	 3
+
 /* ldapd.c */
 extern struct ldapd_stats	 stats;
 extern struct ldapd_config	*conf;
@@ -351,8 +358,7 @@ void			 request_dispatch(struct request *req);
 void			 request_free(struct request *req);
 
 /* ldape.c */
-pid_t			 ldape(struct passwd *pw, char *csockpath,
-				int pipe_parent2ldap[2]);
+void			 ldape(int, int, char *);
 int			 ldap_abandon(struct request *req);
 int			 ldap_unbind(struct request *req);
 int			 ldap_compare(struct request *req);
