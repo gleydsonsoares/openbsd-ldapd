@@ -933,7 +933,7 @@ host_v4(const char *s, in_port_t port)
 	struct sockaddr_in	*sain;
 	struct listener		*h;
 
-	bzero(&ina, sizeof(ina));
+	memset(&ina, 0, sizeof(ina));
 	if (inet_pton(AF_INET, s, &ina) != 1)
 		return (NULL);
 
@@ -955,7 +955,7 @@ host_v6(const char *s, in_port_t port)
 	struct sockaddr_in6	*sin6;
 	struct listener		*h;
 
-	bzero(&ina6, sizeof(ina6));
+	memset(&ina6, 0, sizeof(ina6));
 	if (inet_pton(AF_INET6, s, &ina6) != 1)
 		return (NULL);
 
@@ -980,7 +980,7 @@ host_dns(const char *s, const char *cert,
 	struct sockaddr_in6	*sin6;
 	struct listener		*h;
 
-	bzero(&hints, sizeof(hints));
+	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = PF_UNSPEC;
 	hints.ai_socktype = SOCK_DGRAM; /* DUMMY */
 	error = getaddrinfo(s, NULL, &hints, &res0);
